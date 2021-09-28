@@ -23,3 +23,13 @@ stages:
     - job: deployjob
       steps:
         - bash: echo deploy in deploy job       
+- stage: QADeploy
+  jobs:
+    - job: qadeploy
+      steps:
+      - bash: echo .$job. 
+- stage: ProudDeploy
+  jobs:
+    - job: prouddeploy
+      steps:
+      - bash: echo prouddeploy
