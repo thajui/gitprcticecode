@@ -18,12 +18,12 @@ jobs:
    
 
   - job: job2
-    dependsOn: job3
+    dependsOn: job1
     steps:
     - script: echo Hello, world  Job2 !
       displayName: 'Run a one-line script'
   - job: job3
-    dependsOn: job1
+    dependsOn: job2
     steps:
     - script: echo Hello, world  Job3 !
       displayName: 'Run a one-line script'
