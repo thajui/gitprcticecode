@@ -18,8 +18,12 @@ stages:
       - bash: echo $(piplinelevelvariable)
       - bash: echo $(Build.BuildId)
       - bash: echo $(Build.BuildNumber)
-      - bash: ls_R $(System.DefaultWorkingDirectory)
+     
       - bash: echo $(Build.DefinitionName)
+      - bash: java -version
+      - bash: python --version
+      - bash: mvn --version
+      
     # - job: job2
     #   steps:
     #     - bash: echo build second job --> job2
