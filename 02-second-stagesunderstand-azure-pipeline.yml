@@ -16,34 +16,37 @@ stages:
       steps:
       - bash: echo Bulid first job --> job1
       - bash: echo $(piplinelevelvariable)
-    - job: job2
-      steps:
-        - bash: echo build second job --> job2
-- stage: DevDeploy
-  variables:
-    environment: Dev
-  dependsOn: Build
-  jobs:
-    - job: deployjob
-      steps:
-        - bash: echo $(environment)DevDeploy       
-- stage: QADeploy
-  variables:
-    environment: QADeploy
-  dependsOn: 
-   - Build
-   - DevDeploy
+      - bash: echo $(Build.BuildId)
+      - bash: echo $(Build.BuildNumber	)
+      - bash: ls_R $(System.DefaultWorkingDirectory	)
+    # - job: job2
+    #   steps:
+    #     - bash: echo build second job --> job2
+# - stage: DevDeploy
+#   variables:
+#     environment: Dev
+#   dependsOn: Build
+#   jobs:
+#     - job: deployjob
+#       steps:
+#         - bash: echo $(environment)DevDeploy       
+# - stage: QADeploy
+#   variables:
+#     environment: QADeploy
+#   dependsOn: 
+#    - Build
+#    - DevDeploy
    
-  jobs:
-    - job: qadeploy
-      steps:
-      - bash: echo $(environment) 
-- stage: ProudDeploy
-  dependsOn: 
-  - Build
-  - DevDeploy
-  - QADeploy
-  jobs:
-    - job: prouddeploy
-      steps:
-      - bash:  echo $(environment)DevDeploy
+#   jobs:
+#     - job: qadeploy
+#       steps:
+#       - bash: echo $(environment) 
+# - stage: ProudDeploy
+#   dependsOn: 
+#   - Build
+#   - DevDeploy
+#   - QADeploy
+#   jobs:
+#     - job: prouddeploy
+#       steps:
+#       - bash:  echo $(environment)DevDeploy
