@@ -15,29 +15,33 @@ stages:
     - job: job1
       steps:
       - bash: echo Bulid first job --> job1
+      - bash: $(piplinelevelvariable)
     - job: job2
       steps:
         - bash: echo build second job --> job2
-- stage: Deploy
+- stage: DevDeploy
+  variables:
+    environment: Dev
   dependsOn: Build
   jobs:
     - job: deployjob
       steps:
-        - bash: echo deploy in deploy job       
+        - bash: echo $(environment)DevDeploy       
 - stage: QADeploy
   dependsOn: 
    - Build
-   - Deploy
-   - ProudDeploy
+   - DevDeploy
+   
   jobs:
     - job: qadeploy
       steps:
-      - bash: echo qadeploy
+      - bash: echo $(environment) DevDeploy
 - stage: ProudDeploy
   dependsOn: 
   - Build
-  - Deploy
+  - DevDeploy
+  - QADeploy
   jobs:
     - job: prouddeploy
       steps:
-      - bash: echo prouddeploy
+      - bash:  echo $(environment)DevDeploy
