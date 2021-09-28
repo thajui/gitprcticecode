@@ -28,10 +28,11 @@ stages:
   dependsOn: 
    - Build
    - Deploy
+   - ProudDeploy
   jobs:
     - job: qadeploy
       steps:
-      - bash: echo.$job
+      - bash: echo qadeploy
 - stage: ProudDeploy
   dependsOn: 
   - Build
