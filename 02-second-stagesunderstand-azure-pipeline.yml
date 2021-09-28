@@ -15,7 +15,7 @@ stages:
     - job: job1
       steps:
       - bash: echo Bulid first job --> job1
-      - bash: $(piplinelevelvariable)
+      - bash: echo $(piplinelevelvariable)
     - job: job2
       steps:
         - bash: echo build second job --> job2
