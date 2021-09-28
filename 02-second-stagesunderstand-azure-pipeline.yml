@@ -18,7 +18,7 @@ stages:
       - bash: echo $(piplinelevelvariable)
       - bash: echo $(Build.BuildId)
       - bash: echo $(Build.BuildNumber)
-     
+      - bash: ls -R(System.DefaultWorkingDirectory)
       - bash: echo $(Build.DefinitionName)
       - bash: java -version
       - bash: python --version
