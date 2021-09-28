@@ -23,5 +23,3 @@ stages:
     - job: deployjob
       steps:
         - bash: echo deploy in deploy job       
-- stage: QADeploy
-- stage: ProudDeploy
