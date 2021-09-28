@@ -28,6 +28,8 @@ stages:
       steps:
         - bash: echo $(environment)DevDeploy       
 - stage: QADeploy
+  variables:
+    environment: QADeploy
   dependsOn: 
    - Build
    - DevDeploy
@@ -35,7 +37,7 @@ stages:
   jobs:
     - job: qadeploy
       steps:
-      - bash: echo $(environment) DevDeploy
+      - bash: echo $(environment) 
 - stage: ProudDeploy
   dependsOn: 
   - Build
