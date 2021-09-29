@@ -25,7 +25,7 @@ stages:
         runOnce:
           deploy:
             steps:
-            - script: echo deploy to Dev
+            - script: echo Do the deploy to Dev
       
 
   - stage: QADeploy
