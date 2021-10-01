@@ -18,7 +18,7 @@ steps:
   inputs:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-    commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key=${publickey}'
+    # commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key=${publickey}'
     backendType: 'azurerm'
     backendServiceArm: 'azure-resource-service-manager-connection'
     ensureBackend: true
@@ -27,4 +27,9 @@ steps:
     backendAzureRmStorageAccountName: 'storgeaccountk8taj'
     backendAzureRmContainerName: 'storgeaccountk8container'
     backendAzureRmKey: 'kubernetscluster'
+    allowTelemetryCollection: true
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    environmentServiceName: 'azure-resource-service-manager-connection'
     allowTelemetryCollection: true
