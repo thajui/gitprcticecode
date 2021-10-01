@@ -1,0 +1,30 @@
+
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+- task: DownloadSecureFile@1
+  name: publickey
+  inputs:
+    secureFile: 'azure_rsa.pub'
+    retryCount: '5'
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)gitprcticecode'
+    commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key=${publickey}'
+    backendType: 'azurerm'
+    backendServiceArm: 'azure-resource-service-manager-connection'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'k8cluster-terraform-rg'
+    backendAzureRmResourceGroupLocation: 'eastus'
+    backendAzureRmStorageAccountName: 'storgeaccountk8terraformtaj'
+    backendAzureRmContainerName: 'storgeaccountk8terraformcontainer'
+    backendAzureRmKey: 'kubernetscluster'
+    allowTelemetryCollection: true
