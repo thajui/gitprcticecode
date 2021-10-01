@@ -24,7 +24,7 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'k8cluster-terraform-rg'
     backendAzureRmResourceGroupLocation: 'eastus'
-    backendAzureRmStorageAccountName: 'storgeaccountk8terraformtaj'
-    backendAzureRmContainerName: 'storgeaccountk8terraformcontainer'
+    backendAzureRmStorageAccountName: 'storgeaccountk8taj'
+    backendAzureRmContainerName: 'storgeaccountk8container'
     backendAzureRmKey: 'kubernetscluster'
     allowTelemetryCollection: true
