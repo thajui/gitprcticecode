@@ -44,4 +44,9 @@ steps:
     environmentServiceName: 'azure-resource-service-manager-connection'
     commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key=${publickey}'
     runAzLogin: true
-  
+- task: TerraformCLI@0
+  inputs:
+    command: 'destroy'
+    environmentServiceName: 'azure-resource-service-manager-connection'
+    runAzLogin: true
+    allowTelemetryCollection: true
