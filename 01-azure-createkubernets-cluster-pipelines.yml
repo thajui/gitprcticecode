@@ -17,7 +17,7 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'init'
-    #commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key=${publickey}'
+    #commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key =${publickey}'
     backendType: 'azurerm'
     backendServiceArm: 'azure-resource-service-manager-connection'
     ensureBackend: true
@@ -27,11 +27,15 @@ steps:
     backendAzureRmContainerName: 'storgeaccountk8container'
     backendAzureRmKey: 'kubernets-dev.tfstate'
     
-
-
 - task: TerraformCLI@0
   inputs:
-    command: 'apply'
-    environmentServiceName: 'azure-resource-service-manager-connection'
+    command: 'validate'
     commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key=${publickey}'
+    allowTelemetryCollection: false
+
+# - task: TerraformCLI@0
+#   inputs:
+#     command: 'apply'
+#     environmentServiceName: 'azure-resource-service-manager-connection'
+#     commandOptions: '-var client_id=${client_id} -var client_secret=${client_secret} -var ssh_public_key=${publickey}'
    
