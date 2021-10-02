@@ -28,5 +28,6 @@ steps:
     backendAzureRmResourceGroupLocation: 'eastus'
     backendAzureRmStorageAccountName: 'storgeaccountk8ctaj'
     backendAzureRmContainerName: 'storgeaccountk8container'
-    backendAzureRmKey: 'kubernets-cluster'
-    allowTelemetryCollection: false
+    backendAzureRmKey: 'kubernets-dev.tfstate'
+    allowTelemetryCollection: false 
+    
